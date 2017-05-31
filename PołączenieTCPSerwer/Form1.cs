@@ -44,7 +44,8 @@ namespace PołączenieTCPSerwer
                 serwer = new TcpListener(adresIP, port);
                 serwer.Start();
                 klient = serwer.AcceptTcpClient();
-                listBox1.Items.Add("Nawiązano połączenie");
+                IPEndPoint IP = (IPEndPoint)klient.Client.RemoteEndPoint;
+                listBox1.Items.Add("[" + IP.ToString() + "] :Nawiązano połączenie");
                 button1.Enabled = false;
                 button2.Enabled = true;
                 klient.Close();
